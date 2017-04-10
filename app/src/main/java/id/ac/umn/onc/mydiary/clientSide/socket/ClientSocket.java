@@ -1,5 +1,9 @@
 package id.ac.umn.onc.mydiary.clientSide.socket;
 
+import android.app.Activity;
+import android.os.Looper;
+import android.widget.Toast;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -16,6 +20,7 @@ public class ClientSocket  implements Runnable{
     public int port;
     public String serverAddr;
     public Socket socket;
+    public Activity activity;
     public SelectHostActivity ui;
     public DataInputStream In;
     public DataOutputStream Out;
@@ -28,6 +33,11 @@ public class ClientSocket  implements Runnable{
         Out = new DataOutputStream(socket.getOutputStream());
         In = new DataInputStream(socket.getInputStream());
         Out.flush();
+        activity = ui;
+    }
+
+    public void  currActivity(Activity x){
+        activity = x;
     }
 
     @Override
@@ -36,10 +46,10 @@ public class ClientSocket  implements Runnable{
             try{
                 String msg = In.readUTF();
                 System.out.println("Incoming : "+msg);
-                Thread.sleep(1000);
             }
             catch (Exception e){
                 System.out.println("Something wrong");
+                activity.finish();
                 break;
             }
         }

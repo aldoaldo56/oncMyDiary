@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import id.ac.umn.onc.mydiary.clientSide.socket.Message;
 
 public class LoginActivity extends AppCompatActivity {
     Button loginButton;
-    EditText inputEdit;
+    public EditText inputEdit;
+    LoginActivity loginActivity = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +20,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(inputEdit.getText().equals("")){
+                SelectHostActivity.client.currActivity(loginActivity);
+                if(inputEdit.getText().toString().equals("")){
                     inputEdit.setError("Jangan Kosong !");
                 }
                 else {

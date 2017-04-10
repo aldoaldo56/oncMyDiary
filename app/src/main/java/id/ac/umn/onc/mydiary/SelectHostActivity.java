@@ -47,7 +47,6 @@ public class SelectHostActivity extends AppCompatActivity {
                     client = new ClientSocket(selectHostActivity);
                     clientThread = new Thread(client);
                     clientThread.start();
-                    //client.send(new Message("test", "testUser", "testContent", "SERVER"));
                     Toast.makeText(selectHostActivity, "Connection Ok", Toast.LENGTH_SHORT).show();
                     client.send("Hello World");
                     startActivity(new Intent(SelectHostActivity.this, LoginActivity.class));
