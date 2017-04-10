@@ -40,7 +40,7 @@ public class ClientSocket  implements Runnable{
             }
             catch (Exception e){
                 System.out.println("Something wrong");
-
+                break;
             }
         }
     }
@@ -53,5 +53,9 @@ public class ClientSocket  implements Runnable{
         catch (Exception ex) {
             System.out.println("Message Error");
         }
+    }
+
+    public void closeThread(Thread t){
+        t = null;
     }
 }
