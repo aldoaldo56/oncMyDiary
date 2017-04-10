@@ -32,7 +32,7 @@
             android:id="@+id/txtPort"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="70000"/>
+            android:text="13000"/>
     </TableRow>
     <TableRow>
         <Button

@@ -10,19 +10,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
-
-import id.ac.umn.onc.mydiary.clientSide.socket.Message;
-import id.ac.umn.onc.mydiary.clientSide.socket.SocketClient;
+import id.ac.umn.onc.mydiary.clientSide.socket.ClientSocket;
 
 public class SelectHostActivity extends AppCompatActivity {
     public TextView addrText, portText;
     public EditText addrEdit, portEdit;
     public Button connectButton, localButton;
-    public static SocketClient client;
+    public static ClientSocket client;
     public Thread clientThread;
     public final SelectHostActivity selectHostActivity = this;
 
@@ -50,12 +44,12 @@ public class SelectHostActivity extends AppCompatActivity {
             @Override
             public void onClick (View v){
                 try {
-                    client = new SocketClient(selectHostActivity);
+                    client = new ClientSocket(selectHostActivity);
                     clientThread = new Thread(client);
                     clientThread.start();
                     //client.send(new Message("test", "testUser", "testContent", "SERVER"));
                     Toast.makeText(selectHostActivity, "Connection Ok", Toast.LENGTH_SHORT).show();
-                    client.send(new Message("test", "testUser", "testContent", "SERVER"));
+                    client.send("Hello World");
                     startActivity(new Intent(SelectHostActivity.this, LoginActivity.class));
 
                 } catch (Exception e) {

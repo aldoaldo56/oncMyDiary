@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SelectHostActivity.client.send(new Message("login", "user2", "password", "SERVER"));
+                SelectHostActivity.client.send("New User");
                 //Toast.makeText(LoginActivity.this, "Login Login", Toast.LENGTH_SHORT).show();
             }
         });
