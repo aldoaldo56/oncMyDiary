@@ -1,15 +1,13 @@
 package id.ac.umn.onc.mydiary.clientSide.socket;
 
-import android.widget.Toast;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
-import id.ac.umn.onc.mydiary.LoginActivity;
-import id.ac.umn.onc.mydiary.SelectHostActivity;
+import id.ac.umn.onc.mydiary.activity.LoginActivity;
+import id.ac.umn.onc.mydiary.activity.SelectHostActivity;
 
 
 /**
