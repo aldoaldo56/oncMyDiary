@@ -16,9 +16,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Input kata2"
+            android:text="logout"
             android:gravity="center"/>
     </TableRow>
     <TableRow>
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"/>
         <Button
             android:id="@+id/btnLogin"
             android:layout_height="wrap_content"

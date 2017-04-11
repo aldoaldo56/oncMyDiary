@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
+import id.ac.umn.onc.mydiary.LoginActivity;
 import id.ac.umn.onc.mydiary.SelectHostActivity;
 
 /**
@@ -20,8 +21,8 @@ public class ClientSocket  implements Runnable{
     public int port;
     public String serverAddr;
     public Socket socket;
-    public Activity activity;
     public SelectHostActivity ui;
+    public LoginActivity uiLogin;
     public DataInputStream In;
     public DataOutputStream Out;
 
@@ -33,11 +34,7 @@ public class ClientSocket  implements Runnable{
         Out = new DataOutputStream(socket.getOutputStream());
         In = new DataInputStream(socket.getInputStream());
         Out.flush();
-        activity = ui;
-    }
-
-    public void  currActivity(Activity x){
-        activity = x;
+        this.ui = ui;
     }
 
     @Override
@@ -48,10 +45,29 @@ public class ClientSocket  implements Runnable{
                 System.out.println("Incoming : "+msg);
             }
             catch (Exception e){
-                System.out.println("Something wrong");
-                activity.finish();
+                System.out.println("Disconnected From Server");
                 break;
             }
+        }
+    }
+
+    public void logout(){
+        try {
+            Out.writeUTF("56c93ea0dda0b9bac4aa1f225ff6127b");
+            System.out.println("Outgoing : 56c93ea0dda0b9bac4aa1f225ff6127b");
+        }
+        catch (Exception ex) {
+            System.out.println("Message Error");
+        }
+    }
+
+    public void login(Member member){
+        try {
+            Out.writeUTF("");
+            System.out.println("Outgoing : 56c93ea0dda0b9bac4aa1f225ff6127b");
+        }
+        catch (Exception ex) {
+            System.out.println("Message Error");
         }
     }
 
