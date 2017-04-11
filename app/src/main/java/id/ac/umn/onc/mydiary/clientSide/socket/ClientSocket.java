@@ -1,7 +1,5 @@
 package id.ac.umn.onc.mydiary.clientSide.socket;
 
-import android.app.Activity;
-import android.os.Looper;
 import android.widget.Toast;
 
 import java.io.DataInputStream;
@@ -12,6 +10,7 @@ import java.net.Socket;
 
 import id.ac.umn.onc.mydiary.LoginActivity;
 import id.ac.umn.onc.mydiary.SelectHostActivity;
+
 
 /**
  * Created by aldo_ on 10/04/2017.
@@ -25,6 +24,7 @@ public class ClientSocket  implements Runnable{
     public LoginActivity uiLogin;
     public DataInputStream In;
     public DataOutputStream Out;
+    public String message;
 
     public ClientSocket(SelectHostActivity ui) throws IOException {
         this.ui = ui;
@@ -42,6 +42,7 @@ public class ClientSocket  implements Runnable{
         while(true){
             try{
                 String msg = In.readUTF();
+                message = msg;
                 System.out.println("Incoming : "+msg);
             }
             catch (Exception e){
@@ -54,16 +55,6 @@ public class ClientSocket  implements Runnable{
     public void logout(){
         try {
             Out.writeUTF("56c93ea0dda0b9bac4aa1f225ff6127b");
-            System.out.println("Outgoing : 56c93ea0dda0b9bac4aa1f225ff6127b");
-        }
-        catch (Exception ex) {
-            System.out.println("Message Error");
-        }
-    }
-
-    public void login(Member member){
-        try {
-            Out.writeUTF("");
             System.out.println("Outgoing : 56c93ea0dda0b9bac4aa1f225ff6127b");
         }
         catch (Exception ex) {
