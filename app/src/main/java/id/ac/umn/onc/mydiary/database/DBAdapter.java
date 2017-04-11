@@ -2,11 +2,13 @@ package id.ac.umn.onc.mydiary.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import id.ac.umn.onc.mydiary.model.Customer;
+import id.ac.umn.onc.mydiary.model.Memo;
 
 /**
  * Created by aldo_ on 31/03/2017.
@@ -38,14 +40,22 @@ public class DBAdapter extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE_CUSTOMER = "";
+        String CREATE_TABLE_CUSTOMER = "CREATE TABLE "+ TABLE_CUSTOMER +"("
+                + COLUMN_CUSTOMER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_CUSTOMER_EMAIL + " TEXT UNIQUE, "
+                + COLUMN_CUSTOMER_PASSWORD + " TEXT NOT NULL, "
+                + COLUMN_CUSTOMER_NAME + " TEXT NOT NULL )";
         db.execSQL(CREATE_TABLE_CUSTOMER);
 
-        String CREATE_TABLE_MEMO = "";
-                /*"CREATE TABLE " + TABLE_COURSE + "("
-                        + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + COLUMN_COURSE_DESC + " TEXT NOT NULL, "
-                        + COLUMN_COURSE_NAME + " TEXT NOT NULL )";*/
+        String CREATE_TABLE_MEMO = "CREATE TABLE " + TABLE_MEMO + "("
+                + COLUMN_MEMO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_MEMO_ID_CUSTOMER + "INTEGER, "
+                + COLUMN_MEMO_EMOTION + " TEXT NOT NULL, "
+                + COLUMN_MEMO_NOTE + " TEXT NOT NULL, "
+                + COLUMN_MEMO_IMAGE + " BLOB, "
+                + COLUMN_MEMO_DATE + " DATE NOT NULL, "
+                + "FOREIGN KEY ("+COLUMN_MEMO_ID_CUSTOMER+") REFERENCES "+TABLE_CUSTOMER+"("+COLUMN_CUSTOMER_ID+")";
+
         db.execSQL(CREATE_TABLE_MEMO);
     }
 
@@ -69,57 +79,109 @@ public class DBAdapter extends SQLiteOpenHelper {
     }
 
     public void insertCustomer(Customer customer){
-        ContentValues contentValues = new ContentValues();/*
-        contentValues.put(COLUMN_USERNAME, account.getUsername());
-        contentValues.put(COLUMN_PASSWORD, account.getPassword());
-        contentValues.put(COLUMN_NAME, account.getName());
-        contentValues.put(COLUMN_ADDRESS, account.getAddress());
-        contentValues.put(COLUMN_EMAIL, account.getEmail());*/
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_CUSTOMER_ID, customer.getId());
+        contentValues.put(COLUMN_CUSTOMER_EMAIL, customer.getEmail());
+        contentValues.put(COLUMN_CUSTOMER_PASSWORD, customer.getPassword());
+        contentValues.put(COLUMN_CUSTOMER_NAME, customer.getName());
         db.insert(TABLE_CUSTOMER, null, contentValues);
     }
 
-    /*
-    public Cursor getAllCourse(){
-        Cursor cursor = db.query(TABLE_COURSE,
+    public void insertMemo (Memo memo){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_MEMO_ID, memo.getId());
+        contentValues.put(COLUMN_MEMO_ID_CUSTOMER, memo.getIdCustomer());
+        contentValues.put(COLUMN_MEMO_EMOTION, memo.getEmotion());
+        contentValues.put(COLUMN_MEMO_NOTE, memo.getNote());
+        contentValues.put(COLUMN_MEMO_IMAGE, memo.getImage());
+        contentValues.put(COLUMN_MEMO_DATE, memo.getDate());
+        db.insert(TABLE_MEMO, null, contentValues);
+    }
+
+
+    public Cursor getAllCustomer(){
+        Cursor cursor = db.query(TABLE_CUSTOMER,
                 new String[]{
-                        COLUMN_ID,
-                        COLUMN_COURSE_NAME,
-                        COLUMN_COURSE_DESC
+                        COLUMN_CUSTOMER_ID,
+                        COLUMN_CUSTOMER_EMAIL,
+                        COLUMN_CUSTOMER_PASSWORD,
+                        COLUMN_CUSTOMER_NAME
                 },
                 null, null, null, null, null);
         return cursor;
     }
 
-    public boolean updateCourse(long rowID,String newName, String newDesc){
+    public Cursor getAllMemo(){
+        Cursor cursor = db.query(TABLE_MEMO,
+                new String[]{
+                        COLUMN_MEMO_ID,
+                        COLUMN_MEMO_ID_CUSTOMER,
+                        COLUMN_MEMO_EMOTION,
+                        COLUMN_MEMO_NOTE,
+                        COLUMN_MEMO_IMAGE,
+                        COLUMN_MEMO_DATE
+                },
+                null, null, null, null, null);
+        return cursor;
+    }
+
+    public boolean updateCustomer(long rowID,String newEmail, String newPassword, String newName){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_COURSE_NAME, newName);
-        contentValues.put(COLUMN_COURSE_DESC, newDesc);
+        contentValues.put(COLUMN_CUSTOMER_EMAIL, newEmail);
+        contentValues.put(COLUMN_CUSTOMER_PASSWORD, newPassword);
+        contentValues.put(COLUMN_CUSTOMER_NAME, newName);
         return db.update(
-                TABLE_COURSE,
+                TABLE_CUSTOMER,
                 contentValues,
-                COLUMN_ID + " = " + rowID,
+                COLUMN_CUSTOMER_ID + " = " + rowID,
                 null
         ) > 0;
     }
+    /*
+    public boolean updateMemo(long rowID,String newEmotion, String newNote, String newImage){
 
-    public boolean deleteCourse(String name){
+    }*/
+
+    public boolean deleteMemo(Integer id){
         boolean result = false;
-        String query = "SELECT * FROM " + TABLE_COURSE + " WHERE "
-                + COLUMN_COURSE_NAME + "= \"" + name + "\"";
+        String query = "SELECT * FROM " + TABLE_MEMO + " WHERE "
+                + COLUMN_MEMO_ID + "= \"" + id + "\"";
         Cursor cursor = db.rawQuery(query, null);
-        Course course = new Course();
+        Memo memo = new Memo();
         if(cursor.moveToFirst()){
-            course.setId(Integer.parseInt(cursor.getString(0)));
+            memo.setId(Integer.parseInt(cursor.getString(0)));
             db.delete(
-                    TABLE_COURSE,
-                    COLUMN_ID + " = ?",
+                    TABLE_MEMO,
+                    COLUMN_MEMO_ID + " = ?",
                     new String[]{
-                            String.valueOf(course.getId())
+                            String.valueOf(memo.getId())
                     }
             );
             cursor.close();
             result = true;
         }
         return  result;
-    }*/
+    }
+
+    public boolean deleteCustomer(Integer id){
+        boolean result = false;
+        String query = "SELECT * FROM " + TABLE_CUSTOMER + " WHERE "
+                + COLUMN_CUSTOMER_ID + "= \"" + id + "\"";
+        Cursor cursor = db.rawQuery(query, null);
+        Customer customer = new Customer();
+        if(cursor.moveToFirst()){
+            customer.setId(Integer.parseInt(cursor.getString(0)));
+            db.delete(
+                    TABLE_CUSTOMER,
+                    COLUMN_CUSTOMER_ID + " = ?",
+                    new String[]{
+                            String.valueOf(customer.getId())
+                    }
+            );
+            cursor.close();
+            result = true;
+        }
+        return result;
+    }
+
 }
