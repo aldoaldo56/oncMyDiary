@@ -21,10 +21,6 @@ public class SelectHostActivity extends AppCompatActivity {
     public Thread clientThread;
     public final SelectHostActivity selectHostActivity = this;
 
-    public void makeToast(String message){
-        Toast.makeText(selectHostActivity, message, Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Enable Thread Policy

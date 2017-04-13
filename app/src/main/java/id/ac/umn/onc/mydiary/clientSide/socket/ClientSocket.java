@@ -12,6 +12,9 @@ import id.ac.umn.onc.mydiary.activity.SelectHostActivity;
 
 /**
  * Created by aldo_ on 10/04/2017.
+ * list of function :
+ * logout(); function to logout. try send string to server request logout
+ * send(); function to send a message to server, require to wait 1sec after send message.
  */
 
 public class ClientSocket  implements Runnable{
