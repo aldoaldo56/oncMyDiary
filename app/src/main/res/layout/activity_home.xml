@@ -23,101 +23,27 @@
                 android:layout_weight="1"/>
         </TableRow>
         <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Sudah bisa discroll dan akan auto fokus saat buka keyboard jika ingin mengisi edit text\n "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-        <TableRow>
             <EditText
-                android:text="Test"
+                android:id="@+id/txtData"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
+        </TableRow>
+        <TableRow>
+            <Button
+                android:text="Submit"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnSubmit"/>
+            <Button
+                android:text="ReadAll"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnRead"/>
+            <Button
+                android:text="Delete"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnDelete"/>
         </TableRow>
     </TableLayout>
 </ScrollView>
