@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
@@ -28,13 +29,13 @@ public class HomeActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
     }
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
         //buat menu diatas kanan, tapi buat dulu menunya
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,10 +132,21 @@ public class HomeActivity extends AppCompatActivity {
                 tb.addView(tr);
             }
         }
+/*
+        FloatingActionButton fab = new FloatingActionButton(this);
+        fab.setId(View.generateViewId());
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+        fab.setImageResource(R.drawable.common_ic_googleplayservices);
+        fab.setSize(android.support.design.widget.FloatingActionButton.SIZE_MINI);
+        fab.setFocusable(true);
+        fab.setLayoutParams(params);
 
-
-
+        sc.addView(fab);*/
         sc.addView(tb);
         int paddingDp = Utilities.pxToDp(this,16);
         sc.setPadding(paddingDp,paddingDp,paddingDp,paddingDp);

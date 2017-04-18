@@ -4,14 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
-        android:id="@+id/menuUpdate"
-        android:title="Update"
-        app:showAsAction="never"
-        >
-    </item>
-    <item
-        android:id="@+id/menuDelete"
-        android:title="Delete"
+        android:id="@+id/menuAdd"
+        android:title="Add"
         app:showAsAction="never"
         >
     </item>

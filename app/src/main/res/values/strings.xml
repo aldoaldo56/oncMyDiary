@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyDiary</string>
+    <string name="title_activity_asd">AsdActivity</string>
 </resources>

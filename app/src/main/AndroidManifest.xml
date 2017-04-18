@@ -31,7 +31,8 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.SelectHostActivity" />
         <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.SplashScreenONCActivity"></activity>
+        <activity android:name=".activity.SplashScreenONCActivity" />
+        <activity android:name=".activity.AddMemoActivity" />
     </application>
 
 </manifest>

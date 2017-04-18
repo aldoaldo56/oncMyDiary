@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="id.ac.umn.onc.mydiary.activity.AddMemoActivity">
+
+    <TextView
+        android:text="Write Anything"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/editMemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapSentences|textMultiLine"
+        android:hint="HAHA !"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <CheckBox
+                android:id="@+id/chkAutoSave"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Auto Save"/>
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Save"/>
+        </TableRow>
+
+        <TableRow>
+            <Button
+                android:id="@+id/btnAddPhoto"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Insert Photo"/>
+            <Button
+                android:id="@+id/btnaddVideo"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Insert Video"/>
+            <Button
+                android:id="@+id/btnAddLocation"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Insert Location"/>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
