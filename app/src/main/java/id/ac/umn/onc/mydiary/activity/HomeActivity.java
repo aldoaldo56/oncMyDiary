@@ -3,10 +3,12 @@ package id.ac.umn.onc.mydiary.activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -45,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.transition.fadein, R.transition.fadeout);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); ini tombol back
         //setContentView(R.layout.activity_home);
         ArrayList<String> strings = new ArrayList<>();
@@ -140,5 +143,7 @@ public class HomeActivity extends AppCompatActivity {
         int paddingDp = Utilities.pxToDp(this,16);
         sc.setPadding(paddingDp,paddingDp,paddingDp,paddingDp);
         this.addContentView(sc,params);
+
+
     }
 }
