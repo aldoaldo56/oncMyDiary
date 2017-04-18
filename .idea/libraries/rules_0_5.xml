@@ -4,8 +4,8 @@
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support.test/rules/0.5/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support.test/rules/0.5/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support.test/rules/0.5/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/3fec735bdb06ccc08532efe026c2ea73003a789c/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/3fec735bdb06ccc08532efe026c2ea73003a789c/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
