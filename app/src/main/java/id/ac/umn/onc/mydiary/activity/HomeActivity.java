@@ -3,20 +3,13 @@ package id.ac.umn.onc.mydiary.activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -26,7 +19,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import id.ac.umn.onc.mydiary.R;
-import id.ac.umn.onc.mydiary.model.Memo;
 import id.ac.umn.onc.mydiary.model.Utilities;
 
 public class HomeActivity extends AppCompatActivity {
@@ -139,11 +131,13 @@ public class HomeActivity extends AppCompatActivity {
                 tb.addView(tr);
             }
         }
+
+
+
+
         sc.addView(tb);
         int paddingDp = Utilities.pxToDp(this,16);
         sc.setPadding(paddingDp,paddingDp,paddingDp,paddingDp);
         this.addContentView(sc,params);
-
-
     }
 }
